@@ -24,11 +24,11 @@ public class HazelcastConfiguration {
                                 .setEvictionPolicy(EvictionPolicy.LRU)
                                 .setTimeToLiveSeconds(-1));
         NetworkConfig network = config.getNetworkConfig();
-        network.setPortCount(2);
+        network.setPortCount(3);
         JoinConfig join = network.getJoin();
         join.getMulticastConfig().setEnabled(false);
-        join.getTcpIpConfig().addMember("127.0.0.1").setEnabled(true);
-        network.getInterfaces().setEnabled(true).addInterface("127.0.0.1");
+        join.getTcpIpConfig().addMember("127.0.0.1").addMember("127.0.0.1").addMember("127.0.0.1").setEnabled(true);
+        network.getInterfaces().setEnabled(true).addInterface("127.0.0.1").addInterface("127.0.0.1").addInterface("127.0.0.1");
         return config;
     }
 }
